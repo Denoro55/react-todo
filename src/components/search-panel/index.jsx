@@ -1,9 +1,18 @@
 import React from "react";
 
-const SearchPanel = () => {
-    const placeholderText = 'Search';
+export default class SearchPanel extends React.Component {
+    state = {
+        value: ''
+    };
 
-    return <input className="form-control input" placeholder={placeholderText} type="text"/>
-};
+    handleChange = (event) => {
+        this.setState({
+            value: event.target.value
+        });
+        this.props.changeFilterTerm(event.target.value);
+    };
 
-export default SearchPanel;
+    render() {
+        return <input onChange={this.handleChange} className="form-control input" placeholder="Search" type="text" value={this.state.value}/>
+    }
+}

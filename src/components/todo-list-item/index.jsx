@@ -1,23 +1,28 @@
 import React from "react";
+import cn from 'classnames';
+
 import './todo-list-item.css';
 
-const TodoListItem = ({label, important = false}) => {
-    const style = {
-        color: important ? 'tomato' : null,
-        fontWeight: important ? 'bold' : null,
-    };
+export default class TodoListItem extends React.Component {
+    render() {
+        const {done, important, label, onToggleDone, onToggleImportant, onDelete} = this.props;
 
-    return (
-        <div className="d-flex">
-            <span style={style}>{label}</span>
-            <button className="ml-auto btn btn-outline-danger btn-sm">
-                <i className="fa fa-trash"></i>
-            </button>
-            <button className="btn btn-outline-success btn-sm">
-                <i className="fa fa-exclamation"></i>
-            </button>
-        </div>
-    )
-};
+        const cls = cn({
+            'd-flex align-items-center': true,
+            done,
+            important
+        });
 
-export default TodoListItem;
+        return (
+            <div className={cls}>
+                <span onClick={onToggleDone}>{label}</span>
+                <button onClick={onDelete} className="ml-auto btn btn-outline-danger btn-sm">
+                    <i className="fa fa-trash"/>
+                </button>
+                <button onClick={onToggleImportant} className="btn btn-outline-success btn-sm">
+                    <i className="fa fa-exclamation"/>
+                </button>
+            </div>
+        )
+    }
+}

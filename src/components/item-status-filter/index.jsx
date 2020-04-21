@@ -1,19 +1,27 @@
 import React from "react";
+import cn from 'classnames';
 
-const ItemStatusFilter = ({label, important = false}) => {
-    return (
-        <div className="btn-group">
-            <button className="btn btn-primary active">
-                All
-            </button>
-            <button className="btn btn-secondary">
-                Active
-            </button>
-            <button className="btn btn-secondary">
-                Done
-            </button>
-        </div>
-    )
-};
+export default class ItemStatusFilter extends React.Component {
+    buttons = [
+        {name: 'all', label: 'All'},
+        {name: 'active', label: 'Active'},
+        {name: 'done', label: 'Done'}
+    ];
 
-export default ItemStatusFilter;
+    render() {
+        const {changeFilter, filter} = this.props;
+
+        return (
+            <div className="btn-group">
+                {this.buttons.map((btn, id) => {
+                    const clazz = btn.name === filter ? 'btn-primary' : 'btn-secondary';
+                    return (
+                        <button key={id} onClick={() => changeFilter(btn.name)} className={`btn ${clazz}`}>
+                            {btn.label}
+                        </button>
+                    )
+                })}
+            </div>
+        )
+    }
+}

@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
     entry: './src/index.jsx',
     output: {
-        filename: 'index.js',
+        filename: 'index.jsx',
         path: path.resolve(__dirname, 'dist'), // путь к dist
         publicPath: 'dist' // чтобы отслеживать изменения и делать reload
     },
@@ -16,7 +16,7 @@ module.exports = {
                     loader: 'babel-loader',
                     options: {
                         presets: ['@babel/preset-env'],
-                        "plugins": ["@babel/plugin-transform-react-jsx"]
+                        "plugins": ["@babel/plugin-transform-react-jsx", '@babel/plugin-proposal-class-properties']
                     }
                 }
             },

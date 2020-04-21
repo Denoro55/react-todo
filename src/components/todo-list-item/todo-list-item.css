@@ -2,3 +2,16 @@
     width: 32px;
     margin-left: 10px;
 }
+
+.list-group-item span {
+    cursor: pointer;
+}
+
+.list-group-item .done span {
+    text-decoration: line-through;
+}
+
+.list-group-item .important span {
+    font-weight: bold;
+    color: tomato;
+}
