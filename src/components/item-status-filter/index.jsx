@@ -9,14 +9,14 @@ export default class ItemStatusFilter extends React.Component {
     ];
 
     render() {
-        const {changeFilter, filter} = this.props;
+        const {onFilterChange, filter} = this.props;
 
         return (
             <div className="btn-group">
                 {this.buttons.map((btn, id) => {
                     const clazz = btn.name === filter ? 'btn-primary' : 'btn-secondary';
                     return (
-                        <button key={id} onClick={() => changeFilter(btn.name)} className={`btn ${clazz}`}>
+                        <button key={id} onClick={() => onFilterChange(btn.name)} className={`btn ${clazz}`}>
                             {btn.label}
                         </button>
                     )

@@ -18,11 +18,11 @@ export default class App extends React.Component {
         ]
     };
 
-    changeFilterTerm = (term) => {
+    onTermChange = (term) => {
         this.setState({term})
     };
 
-    changeFilter = (filter) => {
+    onFilterChange = (filter) => {
         this.setState({filter})
     };
 
@@ -105,10 +105,10 @@ export default class App extends React.Component {
                         <AppHeader toDo={toDoCount} done={doneCount} />
                         <div className="row mb-3">
                             <div className="col-7">
-                                <SearchPanel changeFilterTerm={this.changeFilterTerm} />
+                                <SearchPanel onTermChange={this.onTermChange} />
                             </div>
                             <div className="col-5 d-flex justify-content-end">
-                                <ItemStatusFilter changeFilter={this.changeFilter} filter={filter} />
+                                <ItemStatusFilter onFilterChange={this.onFilterChange} filter={filter} />
                             </div>
                         </div>
                         <TodoList onToggleDone={this.onToggleDone} onToggleImportant={this.onToggleImportant} onDelete={ this.deleteItem } todos={filteredTodos} />

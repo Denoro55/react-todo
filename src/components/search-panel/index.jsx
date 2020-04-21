@@ -9,7 +9,7 @@ export default class SearchPanel extends React.Component {
         this.setState({
             value: event.target.value
         });
-        this.props.changeFilterTerm(event.target.value);
+        this.props.onTermChange(event.target.value);
     };
 
     render() {
